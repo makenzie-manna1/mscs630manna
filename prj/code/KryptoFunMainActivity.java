@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
       }
       c_text += c;
     }
-    output.setText(c_text);
+    output.setText(c_text.toLowerCase());
   }
   /**
    *
@@ -142,6 +142,6 @@ public class MainActivity extends AppCompatActivity {
       }
       p_text += c;
     }
-    output.setText(p_text);
+    output.setText(p_text.toLowerCase());
   }
 }

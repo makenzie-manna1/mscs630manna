@@ -1,6 +1,9 @@
 package edu.marist.enkryptme;
 
 import android.support.v7.app.AppCompatActivity;
+package edu.marist.enkryptme;
+
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -82,14 +85,12 @@ public class MainActivity extends AppCompatActivity {
     int shift = Integer.parseInt(shift_key.getText().toString());
     String c_text = "";
     for (int i = 0; i < p_text.length(); i++) {
+      char c = p_text.charAt(i);
       if (Character.isWhitespace(p_text.charAt(i))) {
         c_text += " ";
         continue;
       }
-      char c = (char) (p_text.charAt(i) + shift);
-      if (c > 'z' || (c > 'z' && c < 'a')) {
-        c -= 26;
-      }
+      c = (char) (((int)c + shift - 97) % 26 + 97);
       c_text += c;
     }
     output.setText(c_text.toLowerCase());
@@ -132,16 +133,18 @@ public class MainActivity extends AppCompatActivity {
     int shift = Integer.parseInt(shift_key.getText().toString());
     String p_text = "";
     for (int i = 0; i < c_text.length(); i++){
+      char c = c_text.charAt(i);
       if (Character.isWhitespace(c_text.charAt(i))) {
         p_text += " ";
         continue;
       }
-      char c = (char) (c_text.charAt(i) - shift);
-      if (c > 'z' || (c > 'z' && c < 'a')){
-        c -= 26;
-      }
+      c = (char) (((int)c - shift - 122) % 26 + 122);
       p_text += c;
     }
     output.setText(p_text.toLowerCase());
   }
 }
+
+
+
+
